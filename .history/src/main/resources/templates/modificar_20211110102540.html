@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Ver</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Libreria</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link active" href="/">Inicio <span class="sr-only"></span></a>
+            <a class="nav-item nav-link" href="/registro">Registrar Libro</a>
+            <a class="nav-item nav-link" href="/mostrar">Ver</a>
+            <a class="nav-item nav-link" href="/modificar/{id}">Modificar</a>
+            <a class="nav-item nav-link" href="/eliminar">Eliminar</a>
+            <a class="nav-item nav-link disabled" href="Log in">Registrarse</a>
+            <a class="nav-item nav-link disabled" href="Log in">Log in</a>
+          </div>
+        </div>
+      </nav>
+    
+    <h2>Muestra de Libros, Autores y Editoriales.</h2>
+
+    <p>Acá te mostramos todos los libros, autores y editoriales registrados en la base de datos.</p>
+
+    <p th:if="${exito != null}" th:text="${exito}" style="color: green;"></p>
+    <h3>Libros</h3>
+    
+    <form th:action="@{/modificar/__${libro.id}__}" method="POST">
+        <input hidden th:value="${id}" name="id">
+
+            <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+            
+            <ul>
+                <li><label for="">Autor(NOFUNCIONA): </label><input th:value="${libro.autor.nombre}" type="text" name="nombreAutor"></li>
+             
+                <li><label for="">Editorial(NOFUNCIONA): </label><input type="text" name="tituloEditorial" th:value="${libro.editorial.nombre}"></li>
+                
+                <li><label for="">Titulo: </label><input type="text" name="tituloLibro" th:value="${libro.titulo}"></li>
+                <li><label for="">ISBN: </label><input type="number" name="isbn" th:value="${libro.isbn}"></li>
+                <li><label for="">Ejemplares: </label><input type="number" name="ejemplares" th:value="${libro.ejemplares}"></li>
+                <li><label for="">Año: </label><input type="number" name="anio" th:value="${libro.anio}"></li>
+            </ul>
+            <button type="submit" value="">Modificar</button>
+    </form>
+
+    
+
+
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>

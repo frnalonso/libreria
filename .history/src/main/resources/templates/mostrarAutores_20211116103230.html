@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h3>Autores</h3>
+
+    <table border="2" align="center" class="table table-success table-striped">
+      <thead>
+          <tr class="table-success">
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Alta</th>
+            <th colspan="3">Acción a realizar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each=" autor: ${autores}" >
+            <th th:text="${autor.id}" ></th>
+            <td th:text="${autor.nombre}" ></td>
+            <td th:text="${autor.alta}" ></td>
+            <td width = "40"><a th:href="@{/autor/modificarAutor/__${autor.id}__}"><button type="button" class="btn btn-success">Editar</button></a></td>
+            <td width = "40"><a href=""><button type="button" class="btn btn-warning">Baja</button></a></td>
+            <td width = "40"><a th:href="@{/autor/eliminarAutor/__${autor.id}__}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+          
+          </tr>
+        </tbody>
+  </table>
+
+</body>
+</html>

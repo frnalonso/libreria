@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Autores</title>
+</head>
+<body class="p-1 text-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/" ><img src="/images/icono_libreria2.jpg" width="40px" alt=""></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Libros
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="/registro">Registrar Libro</a></li>
+                <li><a class="dropdown-item" href="/mostrar">Ver Libros</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Autores
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Registrar Autor</a></li>
+                <li><a class="dropdown-item" href="#">Ver Autores</a></li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Editoriales
+              </a>
+              <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <li><a class="dropdown-item" href="#">Registrar Editorial</a></li>
+                <li><a class="dropdown-item" href="#">Ver Editoriales</a></li>
+              </ul>
+            </li>
+            <a class="nav-item nav-link disabled" href="Log in">Registrarse</a>
+            <a class="nav-item nav-link disabled" href="Log in">Log in</a>
+          </div>
+        </div>
+      </nav>
+    
+    <h3>Autores</h3>
+
+    <table border="2" align="center" class="table table-success table-striped">
+      <thead>
+          <tr class="table-success">
+            <th scope="col">ID</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Alta</th>
+            <th colspan="3">Acción a realizar</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr th:each=" autor: ${autores}" >
+            <th th:text="${autor.id}" ></th>
+            <td th:text="${autor.nombre}" ></td>
+            <td th:text="${autor.alta}" ></td>
+            <td width = "40"><a th:href="@{/autor/modificarAutor/__${autor.id}__}"><button type="button" class="btn btn-success">Editar</button></a></td>
+            <td width = "40"><a href=""><button type="button" class="btn btn-warning">Baja</button></a></td>
+            <td width = "40"><a th:href="@{/autor/eliminarAutor/__${autor.id}__}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
+          
+          </tr>
+        </tbody>
+  </table>
+
+</body>
+</html>

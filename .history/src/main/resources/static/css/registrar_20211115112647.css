@@ -1,0 +1,20 @@
+body {
+    background-color:burlywood;
+}
+
+h2 {
+    color: red;
+    text-align: center;
+}
+
+img {
+    display:block;
+    margin:auto;
+}
+
+.content {
+    margin 0 auto;
+    width: 250px;
+}
+
+
