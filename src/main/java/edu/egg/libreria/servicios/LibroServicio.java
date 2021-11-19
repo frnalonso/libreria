@@ -47,9 +47,14 @@ public class LibroServicio {
         
     }
     
+    
     @Transactional
-    public Libro buscarPorId(String id) {
-        return libroRepositorio.getOne(id);
+    public void baja(String idLibro) {
+        Optional<Libro> respuesta = libroRepositorio.findById(idLibro);
+        if(respuesta.isPresent()) {
+            Libro libro = libroRepositorio.findById(idLibro).get();
+            libro.setAlta(false);
+        }
     }
     
     @Transactional
@@ -97,6 +102,10 @@ public class LibroServicio {
         return libro;
     }
     
+    @Transactional
+    public Libro buscarPorId(String id) {
+        return libroRepositorio.getOne(id);
+    }
     public void validar(Long isbn, String titulo, Integer anio, Integer ejemplares) throws ErrorServicio {
        
         

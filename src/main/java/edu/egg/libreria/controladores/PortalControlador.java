@@ -153,6 +153,19 @@ public class PortalControlador {
         
     }
     
+    @GetMapping("/baja/{id}")
+    public String baja(@PathVariable String id,ModelMap model, RedirectAttributes redirect) {
+        try {
+            servicioLibro.baja(id);
+            redirect.addFlashAttribute("exito","Dado de baja con éxito.");
+            return "redirect:/mostrar";
+        } catch (Exception e) {
+            model.put("error", "No se pudo dar de baja.");
+        }
+        return "redirect:/mostrar";
+        
+    }
+    
     
 
     

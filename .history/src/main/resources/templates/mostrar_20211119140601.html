@@ -89,7 +89,7 @@
               <td th:text="${libro.autor.nombre}"></td>
               <td th:text="${libro.editorial.nombre}"></td> 
               <td width = "60"><a th:href="@{/modificar/__${libro.id}__}"><button type="button" class="btn btn-success">Editar</button></a></td>
-              <td width = "50"><a th:href="@{/baja/__${libro.id}__}"><button type="button" class="btn btn-warning">Baja</button></a></td>
+              <td width = "50"><a th:href="@{/mostrar/__${libro.id}__}"><button type="button" class="btn btn-warning">Baja</button></a></td>
               <td width = "40"><a th:href="@{/mostrar/__${libro.id}__}"><button type="button" class="btn btn-danger">Eliminar</button></a></td>
 
             </tr>
