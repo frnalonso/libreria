@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/index.css">
+    <title>Registro</title>
+
+</head>
+<body>
+
+    <h2>Registrar Usuario.</h2>
+
+    <div class="content">
+        <form action="/registro" method="post" enctype="multipart/form-data">
+            <p th:if="${error != null}" th:text="${error}" style="color: red;"></p>
+            <ul>
+                <li><label for="">Titulo: </label><input type="text" name="tituloLibro" th:value="${tituloLibro}"></li>
+                <li><label for="">ISBN: </label><input type="number" name="isbn" th:value="${isbn}"></li>
+                <li><label for="">Ejemplares: </label><input type="number" name="ejemplares" th:value="${ejemplares}"></li>
+                <li><label for="">Año: </label><input type="number" name="anio" th:value="${anio}"></li>
+                <li><select name="idEditorial"><option th:each="editorial : ${editoriales}" th:value="${editorial.id}" th:text="${editorial.nombre}"></option></select></li>
+                <li><select name="idAutor"><option th:each=" autor : ${autores}" th:value="${autor.id}" th:text="${autor.nombre}"></option></select></li>
+            </ul>
+            <button type="submit">Registrar Libro</button>
+        </form>
+    </div>
+    
+</body>
+</html>

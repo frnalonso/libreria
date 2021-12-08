@@ -80,11 +80,15 @@ public class LibroServicio {
     }
     
     @Transactional
-    public void eliminarLibro(String id) {
+    public void eliminarLibro(String id) throws ErrorServicio {
         Optional<Libro> respuesta = libroRepositorio.findById(id);
         if(respuesta.isPresent()) {
             Libro libro = libroRepositorio.findById(id).get();
+            if(libro.isAlta() == false) {  
             libroRepositorio.delete(libro);
+            } else {
+                throw new ErrorServicio("El libro no está dado de baja, no se puede eliminar.");
+            }
         }
     }
     

@@ -49,11 +49,23 @@ public class EditorialServicio {
     }
     
     @Transactional
-    public void eliminarEditorial(String id) {
+    public void eliminarEditorial(String id) throws ErrorServicio {
         Optional<Editorial> respuesta = editorialRepositorio.findById(id);
         if(respuesta.isPresent()) {
             Editorial editorial = editorialRepositorio.findById(id).get();
-            editorialRepositorio.delete(editorial);
+            if(editorial.isAlta() == false) {
+            editorialRepositorio.delete(editorial);   
+            } else {
+                throw new ErrorServicio("No se puede eliminar ya que no está dado de baja.");
+            }
+        }
+    }
+    
+     public void bajaAutor(String id) throws ErrorServicio {
+        Optional<Editorial> respuesta = editorialRepositorio.findById(id);
+        if(respuesta.isPresent()) {
+            Editorial editorial = editorialRepositorio.findById(id).get();
+            editorial.setAlta(false);
         }
     }
     

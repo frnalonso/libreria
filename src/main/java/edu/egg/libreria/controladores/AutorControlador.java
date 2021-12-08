@@ -62,7 +62,7 @@ public class AutorControlador {
         try {
             servicioAutor.modificar(id, nombre);
             redirect.addFlashAttribute("exito", "Modificación exitosa");
-            return "redirect./mostrar";
+            return "redirect:/mostrar";
         } catch (Exception e) {
             model.put("error","Falto algún dato.");
         }
@@ -86,10 +86,22 @@ public class AutorControlador {
             servicioAutor.eliminarAutor(id);
             redirect.addFlashAttribute("exito", "Eliminado con exito.");
             return "redirect:/autor/mostrarAutores";
-        } catch (Exception e) {
-            model.put("error", "No se puedo eliminar el Autor.");
-            return "eliminarAutor.html";
+        } catch (ErrorServicio ex) {
+            redirect.addFlashAttribute("error", ex.getMessage());
+            return "redirect:/mostrarAutores";
         }
+    }
+    
+    @GetMapping("/baja/{id}") 
+    public String baja(@PathVariable String id, RedirectAttributes redirect) throws ErrorServicio {
+        try {
+            servicioAutor.bajaAutor(id);
+            redirect.addFlashAttribute("exito","Dado de baja con exito.");
+            return "redirect:/mostrarAutores";
+        } catch (ErrorServicio ex) {
+            throw new ErrorServicio("No se puede dar de baja."); 
+        }
+
     }
     
 }

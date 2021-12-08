@@ -57,11 +57,24 @@ public class AutorServicio {
                 
     }
     
-    public void eliminarAutor(String id) {
+    @Transactional
+    public void eliminarAutor(String id) throws ErrorServicio {
         Optional<Autor> respuesta = autorRepositorio.findById(id);
         if(respuesta.isPresent()) {
             Autor autor = autorRepositorio.findById(id).get();
+            if(autor.isAlta() == false) { 
            autorRepositorio.delete(autor);
+            } else {
+                throw new ErrorServicio("No se puede eliminar ya que  "+autor.getNombre()+" no está dado de baja.");
+            }
+        }
+    }
+    
+    public void bajaAutor(String id) throws ErrorServicio {
+        Optional<Autor> respuesta = autorRepositorio.findById(id);
+        if(respuesta.isPresent()) {
+            Autor autor = autorRepositorio.findById(id).get();
+            autor.setAlta(false);
         }
     }
     

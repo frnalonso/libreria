@@ -1,0 +1,54 @@
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    
+    <title>Inicio</title>
+    
+  </head>
+  <body class="p-1 text-white">
+   
+    <h1>Bienvenido a la Libreria</h1>
+    <p>Guarda, modifica y elimina tus libros.</p>
+
+    <img src="/images/registrar_libro.png" class="rounded float-start" alt="...">
+<img src="/images/autor_registrar.jpg" class="rounded float-end" alt="...">
+<img src="/images/editorial_registrar.jpg" class="rounded mx-auto d-block" alt="...">
+
+    
+  
+  </body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <head th:replace="/fragments/head :: head"></head>
+<body class="p-1 text-white">
+    <!--Navigation-->
+    <nav th:replace="/fragments/navbar :: nav"></nav>
+    
+
+   
+    <h1>Bienvenido a la Libreria</h1>
+    <p>Guarda, modifica y elimina tus libros.</p>
+
+    <img src="/images/registrar_libro.png" class="rounded float-start" alt="...">
+<img src="/images/autor_registrar.jpg" class="rounded float-end" alt="...">
+<img src="/images/editorial_registrar.jpg" class="rounded mx-auto d-block" alt="...">
+
+    
+
+      <!-- Bootstrap core JavaScript -->
+ <script th:replace="/fragments/boostjs :: script"></script>
+</body>
+</html>
